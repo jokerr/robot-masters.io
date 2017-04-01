@@ -20,11 +20,6 @@ dependencies {
     compile("com.h2database:h2")
 
     //testing stuff
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-
-    compile("org.springframework.boot:spring-boot-starter-jersey:${springBootVersion}")
-
-    //testing stuff
     testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
 }
 
