@@ -22,7 +22,7 @@ public class RobotMasterRepository {
     private EntityManager em;
 
     /**
-     * Searches for a robot master using the provided parameters.
+     * Searches the persistence tier for the {@link RobotMaster}s that match the provided parameters.
      * @param name Name of the robot master
      * @param weapon Weapon of the robot master
      * @param endurance Endurance of the robot master
@@ -71,6 +71,11 @@ public class RobotMasterRepository {
         return em.createQuery(cq).getResultList();
     }
 
+    /**
+     * Searches the persistence tier for the {@link RobotMaster}.
+     * @param id ID of the RobotMaster
+     * @return RobotMaster or null if not found.
+     */
     public RobotMaster find(String id) {
         return em.find(RobotMaster.class, id);
     }
