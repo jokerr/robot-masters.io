@@ -47,9 +47,9 @@ public class RobotMasterService {
 
     /**
      * Removes the {@link RobotMaster} with the matching ID.
-     * @param id ID of the {@lnk RobotMaster}
+     * @param robotMaster {@link RobotMaster} to delete
      */
-    public void delete(String id) {
-        repository.delete(id);
+    public void delete(RobotMaster robotMaster) {
+        repository.delete(robotMaster);
     }
 }

@@ -30,12 +30,16 @@ public class RobotMasterResource {
     @GET
     @Path("{id}")
     public RobotMaster findRobotMaster(@PathParam("id") String id) {
-        return service.find(id);
+        RobotMaster robotMaster = service.find(id);
+        if(robotMaster == null) {
+            throw new NotFoundException("Robot Master '" + id + "' not found");
+        }
+        return robotMaster;
     }
 
     @DELETE
     @Path("{id}")
     public void deleteRobotMaster(@PathParam("id") String id) {
-        service.delete(id);
+        service.delete(findRobotMaster(id));
     }
 }

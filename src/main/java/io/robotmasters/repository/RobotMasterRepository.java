@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,18 +80,15 @@ public class RobotMasterRepository {
      * @throws EntityNotFoundException Thrown if the robot master cannot be found
      */
     public RobotMaster find(String id) {
-        RobotMaster master = em.find(RobotMaster.class, id);
-        if(master == null) {
-            throw new EntityNotFoundException("Unable to find robot master '" + id + "'");
-        }
-        return master;
+        return em.find(RobotMaster.class, id);
     }
 
     /**
      * Removes the {@link RobotMaster} from the persistence tier.
-     * @param id ID of the RobotMaster to delete
+     * @param robotMaster RobotMaster to delete
      */
-    public void delete(String id) {
-        em.remove(find(id));
+    @Transactional
+    public void delete(RobotMaster robotMaster) {
+        em.remove(em.merge(robotMaster));
     }
 }
