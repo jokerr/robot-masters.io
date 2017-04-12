@@ -44,4 +44,12 @@ public class RobotMasterService {
     public RobotMaster find(String id) {
         return repository.find(id);
     }
+
+    /**
+     * Removes the {@link RobotMaster} with the matching ID.
+     * @param id ID of the {@lnk RobotMaster}
+     */
+    public void delete(String id) {
+        repository.delete(id);
+    }
 }

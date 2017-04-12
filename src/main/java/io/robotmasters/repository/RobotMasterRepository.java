@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -74,9 +75,22 @@ public class RobotMasterRepository {
     /**
      * Searches the persistence tier for the {@link RobotMaster}.
      * @param id ID of the RobotMaster
-     * @return RobotMaster or null if not found.
+     * @return RobotMaster
+     * @throws EntityNotFoundException Thrown if the robot master cannot be found
      */
     public RobotMaster find(String id) {
-        return em.find(RobotMaster.class, id);
+        RobotMaster master = em.find(RobotMaster.class, id);
+        if(master == null) {
+            throw new EntityNotFoundException("Unable to find robot master '" + id + "'");
+        }
+        return master;
+    }
+
+    /**
+     * Removes the {@link RobotMaster} from the persistence tier.
+     * @param id ID of the RobotMaster to delete
+     */
+    public void delete(String id) {
+        em.remove(find(id));
     }
 }

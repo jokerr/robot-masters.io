@@ -4,9 +4,8 @@ import io.robotmasters.beans.RobotMasterService;
 import io.robotmasters.domain.RobotMaster;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
+import java.util.List;
 
 /**
  * @author jokerr
@@ -18,8 +17,25 @@ public class RobotMasterResource {
     private RobotMasterService service;
 
     @GET
+    public List<RobotMaster> findRobotMaster(
+            @QueryParam("name") String name,
+            @QueryParam("weapon") String weapon,
+            @QueryParam("end") Double endurance,
+            @QueryParam("int") Double intelligence,
+            @QueryParam("spd") Double speed,
+            @QueryParam("bat") Double battle) {
+        return service.search(name, weapon, endurance, intelligence, speed, battle);
+    }
+
+    @GET
     @Path("{id}")
     public RobotMaster findRobotMaster(@PathParam("id") String id) {
         return service.find(id);
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void deleteRobotMaster(@PathParam("id") String id) {
+        service.delete(id);
     }
 }
