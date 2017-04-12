@@ -21,6 +21,7 @@ dependencies {
 
     //JAXRS support
     compile("org.springframework.boot:spring-boot-starter-jersey:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-devtools")
 
     //testing stuff
     testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
