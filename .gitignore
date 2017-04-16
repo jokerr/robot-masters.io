@@ -1,4 +1,9 @@
 
+### Eclipse ###
+.settings
+.project
+.classpath
+
 # Created by https://www.gitignore.io/api/java,macos,gradle,windows,intellij+iml
 
 ### Intellij+iml ###
@@ -60,13 +65,8 @@ modules.xml
 *.ipr
 
 ### Java ###
-# Compiled class file
 *.class
-
-# Log file
 *.log
-
-# Package Files #
 *.jar
 *.war
 *.ear
@@ -81,10 +81,7 @@ hs_err_pid*
 *.DS_Store
 
 ### Windows ###
-# Windows thumbnail cache files
 Thumbs.db
-
-# Folder config file
 Desktop.ini
 
 
